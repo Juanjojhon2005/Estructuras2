@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import './App.css'
-const FirstApp = (props)=>{
+import React from 'react';
+import FirstApp from './FirstApp';
+
+function App() {
   return (
     <div>
-    <h1>  {props.title}</h1>
-    <span>10</span>
-     
+      <FirstApp value={10} /> 
     </div>
-    
-  )
+  );
 }
-export default FirstApp
+
+export default App;
