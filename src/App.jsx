@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import FirstApp from './FirstApp';
-import Challenge from './Challenge';
-import Father from './father';
+import { Routes, Route, Link } from "react-router-dom";
+import { AuthProvider } from "./AuthContext";
+import PrivateRoute from "./PrivateRoute";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+import FirstApp from "./FirstApp";
+import Challenge from "./Challenge";
+import Father from "./Father";
 
 function App() {
-  const [view, setView] = useState('counter'); // Estado para controlar la vista
-
   return (
-    <div>
-      {view === 'counter' && <FirstApp value={10} />}
-      {view === 'challenge' && <Challenge />}
-      {view === 'father' && <Father />}
-
-      <button onClick={() => setView('counter')}>Ver Contador</button>
-      <button onClick={() => setView('challenge')}>Ir al Challenge</button>
-      <button onClick={() => setView('father')}>Ver Father</button>
-    </div>
+    <AuthProvider>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/login">Login</Link> | <Link to="/dashboard">Dashboard</Link>
+        <br />
+        <Link to="/Challenge">Challenge</Link> | <Link to="/Father">Father</Link> | <Link to="/FirstApp">FirstApp</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<h1>Home Page</h1>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/Challenge" element={<Challenge />} />
+        <Route path="/FirstApp" element={<FirstApp />} />
+        <Route path="/Father" element={<Father />} />
+      </Routes>
+    </AuthProvider>
   );
 }
 
