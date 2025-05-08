@@ -1,3 +1,4 @@
+import styles from './Home.module.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems, deleteItem, updateItem } from "../features/crudSlice";
@@ -30,15 +31,17 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <h1>Firestore CRUD</h1>
       <FirestoreForm />
-      <ul>
+      <ul className={styles.itemList}>
         {items.map((item) => (
-          <li key={item.id}>
-            {item.nombre} - {item.precio}
-            <button onClick={() => handleUpdate(item)}>Editar</button>
-            <button onClick={() => handleDelete(item.id)}>Eliminar</button>
+          <li key={item.id} className={styles.item}>
+            <span>{item.nombre} - ${item.precio}</span>
+            <div className={styles.actions}>
+              <button onClick={() => handleUpdate(item)}>Editar</button>
+              <button onClick={() => handleDelete(item.id)}>Eliminar</button>
+            </div>
           </li>
         ))}
       </ul>

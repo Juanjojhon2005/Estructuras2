@@ -1,0 +1,51 @@
+
+$primary-color: #4caf50;
+$secondary-color: #388e3c;
+$padding: 1rem;
+$radius: 0.5rem;
+
+@mixin input-style {
+  padding: $padding;
+  border: 2px solid darken($primary-color, 10%);
+  border-radius: $radius;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  &:focus {
+    border-color: $secondary-color;
+    outline: none;
+  }
+}
+
+.formContainer {
+  background: lighten($primary-color, 40%);
+  padding: 2 * $padding;
+  border-radius: $radius;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  h2 {
+    color: $secondary-color;
+    margin-bottom: $padding;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $padding;
+
+    input, textarea {
+      @include input-style;
+    }
+
+    button {
+      @include input-style;
+      background-color: $primary-color;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}

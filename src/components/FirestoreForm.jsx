@@ -1,3 +1,4 @@
+import styles from './FirestoreForm.module.scss';
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/crudSlice";
 import { useState } from "react";
@@ -17,23 +18,26 @@ const FirestoreForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Nombre"
-        name="nombre"
-        value={formData.nombre}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        placeholder="Precio"
-        name="precio"
-        value={formData.precio}
-        onChange={handleChange}
-      />
-      <button type="submit">Agregar</button>
-    </form>
+    <div className={styles.formContainer}>
+      <h2>Agregar Producto</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nombre"
+          name="nombre"
+          value={formData.nombre}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="Precio"
+          name="precio"
+          value={formData.precio}
+          onChange={handleChange}
+        />
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
   );
 };
 

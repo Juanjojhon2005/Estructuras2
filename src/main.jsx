@@ -4,6 +4,8 @@ import App from "./App.jsx";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import crudReducer from "./features/crudSlice";
+import './styles/global.scss';
+
 
 const store = configureStore({
   reducer: {

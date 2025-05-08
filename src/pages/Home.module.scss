@@ -1,0 +1,61 @@
+$bg-color: #ffffff;
+$primary: #4caf50;
+$danger: #d32f2f;
+$radius: 0.5rem;
+$spacing: 1rem;
+
+@mixin button($color) {
+  background-color: $color;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+.homeContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: $spacing;
+  background: $bg-color;
+  border-radius: $radius;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    margin-bottom: $spacing;
+    color: $primary;
+  }
+}
+
+.itemList {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: lighten($primary, 45%);
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: $radius;
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+
+    button:first-child {
+      @include button($primary);
+    }
+
+    button:last-child {
+      @include button($danger);
+    }
+  }
+}
